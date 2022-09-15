@@ -1,0 +1,28 @@
+.navbar-container {
+    padding: 20px 10px 10px;
+    background-color: rgb(172, 168, 168);
+    position: fixed;
+    width: 100%;
+}
+.text-light{
+    font-size: 30px;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    &:hover{
+        color: rgb(247, 139, 139);
+    }
+}
+.mainMenu {
+
+    ul li {
+        list-style-type: none;
+        margin-left: 15px;
+        font-weight: 600;
+        color: azure;
+    }
+
+    ul li a {
+        text-decoration: none;
+        color: azure;
+    }
+}
