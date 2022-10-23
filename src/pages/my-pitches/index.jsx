@@ -88,7 +88,7 @@ const MyPitches = () => {
 
   const handleDisableDelete = (item) => {
     const orderTime = item?.dateOrder + ' ' + item?.timeOrder
-    const date = new Date().toLocaleString()
+    const date = new Date()
     const currentTime = moment(date).format('DD/MM/YYYY HH:mm')
     if (orderTime < currentTime) {
       return (
