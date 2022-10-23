@@ -17,7 +17,7 @@ const Order = () => {
   const { state } = useLocation()
   // const [value, onChange] = useState(new Date())
 
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState();
 
   const handleChange = (val, field) => {
     if (field === 'customerName') {
@@ -47,19 +47,11 @@ const Order = () => {
       setDisable(true)
       alert("Ngày đặt sân không hợp lệ!!!")
     }
+    
 }
   const onChangeTimeOrder = (timeValue) => {
     setTimeOrder(timeValue)
   }
-
-  // const disablesOrderPitch = () => {
-  //   const orderTime = item?.dateOrder + ' ' + item?.timeOrder
-  //   const date = new Date().toLocaleString()
-  //   const currentTime = moment(date).format('DD/MM/YYYY HH:mm')
-  //   if(orderTime < currentTime) {
-      
-  //   }
-  // }
 
   const handleOrderPitch = () => {
     const url = API_ADD_ORDER
@@ -120,12 +112,15 @@ const Order = () => {
         <input
           type="text"
           value={customerName}
+          placeholder="Ex: Nguyễn Văn A"
           onChange={(e) => handleChange(e.target.value, 'customerName')}
           className="w-[100%] border border-slate-500 border-solid border border-slate-500 border-solid h-8 mt-2 px-2 outline-none"
         />
         <p className="mt-2">Số điện thoại</p>
         <input
           type="number"
+          id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+          placeholder="Ex: +84 70 456 521"
           value={phone}
           onChange={(e) => handleChange(e.target.value, 'phone')}
           className="w-[100%] border border-slate-500 border-solid border border-slate-500 border-solid h-8 mt-2 px-2 outline-none"
