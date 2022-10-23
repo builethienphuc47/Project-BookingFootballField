@@ -15,7 +15,9 @@ const Order = () => {
   const [timeOrder, setTimeOrder] = useState()
   const [disable, setDisable] = useState(true)
   const { state } = useLocation()
-  const [value, onChange] = useState(new Date())
+  // const [value, onChange] = useState(new Date())
+
+  const [startDate, setStartDate] = useState(new Date());
 
   const handleChange = (val, field) => {
     if (field === 'customerName') {
@@ -26,17 +28,38 @@ const Order = () => {
     }
   }
 
+  
   useEffect(() => {
-    if (customerName && phone && timeOrder && value) {
+    if (customerName && phone && timeOrder && startDate) {
       setDisable(false)
     } else {
       setDisable(true)
     }
-  }, [customerName, phone, timeOrder, value])
-
+  }, [customerName, phone, timeOrder, startDate])
+  
+  const onChangeDate = (date) => {
+    const dates = new Date()
+    const currentDate = moment(dates)
+    if (currentDate <= date){
+      setStartDate(date)
+    }
+    if(date < currentDate){
+      setDisable(true)
+      alert("Ngày đặt sân không hợp lệ!!!")
+    }
+}
   const onChangeTimeOrder = (timeValue) => {
     setTimeOrder(timeValue)
   }
+
+  // const disablesOrderPitch = () => {
+  //   const orderTime = item?.dateOrder + ' ' + item?.timeOrder
+  //   const date = new Date().toLocaleString()
+  //   const currentTime = moment(date).format('DD/MM/YYYY HH:mm')
+  //   if(orderTime < currentTime) {
+      
+  //   }
+  // }
 
   const handleOrderPitch = () => {
     const url = API_ADD_ORDER
@@ -44,7 +67,7 @@ const Order = () => {
       .post(url, {
         customerName: customerName,
         phone: phone,
-        dateOrder: moment(value).format('DD/MM/YYYY'),
+        dateOrder: moment(startDate).format('DD/MM/YYYY'),
         timeOrder: timeOrder,
         orderStatus: 1,
         pitchName: state?.pitchName,
@@ -55,7 +78,7 @@ const Order = () => {
       .then(function (response) {
         // handleClearData()
         toast.success(
-          `Đặt sân thành công vào ngày ${moment(value).format(
+          `Đặt sân thành công vào ngày ${moment(startDate).format(
             'DD/MM/YYYY',
           )} vào lúc ${timeOrder}!!!`,
           {
@@ -108,7 +131,8 @@ const Order = () => {
           className="w-[100%] border border-slate-500 border-solid border border-slate-500 border-solid h-8 mt-2 px-2 outline-none"
         />
         <p className="mt-2">Ngày nhận sân</p>
-        <DatePicker onChange={onChange} value={value} />
+        {/* <DatePicker onChange={onChange} value={value} /> */}
+        <DatePicker value={startDate} onChange={onChangeDate}/>
         <p className="mt-2">Giờ nhận sân</p>
         <TimePicker onChange={onChangeTimeOrder} value={timeOrder} />
         <div className="flex justify-between mt-4">
