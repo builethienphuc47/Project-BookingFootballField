@@ -8,6 +8,8 @@ import Modal from 'react-modal'
 import { toast } from 'react-toastify'
 import { customStyles } from '../../pages/my-pitches'
 import { useNavigate } from 'react-router-dom'
+import './styles.scss'
+import { PuffLoader } from 'react-spinners'
 
 const PitchCard = ({ isShowInHome, data, refetchApi }) => {
   const [modalIsOpenEdit, setIsOpenEdit] = useState(false)
@@ -166,20 +168,21 @@ const PitchCard = ({ isShowInHome, data, refetchApi }) => {
 
   return (
     <div
-      className={`w-[200px] min-w-[200px] h-auto rounded-md p-2 transition ease-in-out delay-50 bg-slate-200 ${
+      className={`pitchCard w-[230px] min-w-[230px] h-[300px] rounded-md p-2 transition ease-in-out delay-50 bg-slate-200 ${
         isShowInHome &&
         'hover:-translate-y-1 hover:scale-105 hover:bg-emerald-200'
       } duration-300 mx-3`}
       onClick={() => handleNavigateToOrder(data)}
     >
-      <div className="w-15 h-[123px] bg-slate-500">
-        <img src={pitch} alt="" srcset="" />
+      <div className="pitch-image w-15 h-[123px] bg-slate-500">
+       
+        <img className='image' src={pitch} alt="" srcset="" />
       </div>
-      <div className="mt-1">
-        <p>Tên sân: {data?.pitchName}</p>
-        <p>Kích thước: {data?.pitchSize} người/đội </p>
-        <p>
-          Giá thuê: <span className="text-red-500"> {data?.price} VNĐ</span>
+      <div className="pitch-info mt-1">
+        <p className='name'>Tên sân: {data?.pitchName}</p>
+        <p className='size'>Kích thước: {data?.pitchSize} người/đội </p>
+        <p className='price'>
+          Giá thuê: <span className="text-red-500"> {data?.price}</span> VND
         </p>
       </div>
       {!isShowInHome && (

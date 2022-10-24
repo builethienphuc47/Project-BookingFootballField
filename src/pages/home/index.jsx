@@ -4,7 +4,7 @@ import Navbar from "../../components/navbar";
 import CarouselList from "../../components/carousel";
 import { pitches } from "../../assets/data/pitches";
 import Loader from "../../components/loader";
-import "./styles.css";
+import "./styles.scss";
 import axios from "axios";
 import { API_GET_PITCHES_MANAGEMENT } from "../../assets/urls/endpoint";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -57,7 +57,7 @@ const Home = () => {
               <Loader />
             </div>
           ) : (
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-10 pb-20">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-x-6 gap-y-20 pb-20">
               {data?.map((item) => (
                 <div key={item?._id} className="px-3">
                   <PitchCard isShowInHome={true} data={item} />
