@@ -40,12 +40,12 @@ const Order = () => {
   const onChangeDate = (date) => {
     const dates = new Date()
     const currentDate = moment(dates)
-    if (currentDate <= date){
+    if (currentDate < date){
       setStartDate(date)
     }
     if(date < currentDate){
       setDisable(true)
-      alert("Ngày đặt sân không hợp lệ!!!")
+      alert("Thời gian đặt sân không hợp lệ!!!")
     }
     
 }

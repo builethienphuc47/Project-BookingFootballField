@@ -174,8 +174,7 @@ const PitchCard = ({ isShowInHome, data, refetchApi }) => {
       } duration-300 mx-3`}
       onClick={() => handleNavigateToOrder(data)}
     >
-      <div className="pitch-image w-15 h-[123px] bg-slate-500">
-       
+      <div className="pitch-image w-15 h-[123px] bg-slate-500"> 
         <img className='image' src={pitch} alt="" srcset="" />
       </div>
       <div className="pitch-info mt-1">

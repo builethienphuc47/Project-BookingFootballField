@@ -1,5 +1,6 @@
 // $green: #2ebb8c;
 $white: white;
+$aqua: aqua;
 .pitchCard {
   cursor: pointer;
   position: relative;
@@ -49,7 +50,7 @@ $white: white;
     // box-shadow: 1px 1px 2px rgba(#fff, 0.2);
     // color: lighten($green, 18%);
     text-decoration: none;
-    text-shadow: -1px -1px 0 darken($white, 6%);
+    text-shadow: -1px -1px 0 darken($white, 4%);
     transition: all 250ms linear;
   }
   .pitch-image {

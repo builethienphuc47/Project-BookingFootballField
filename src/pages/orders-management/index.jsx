@@ -35,7 +35,7 @@ const OrdersManagement = () => {
     <div>
       <Navbar />
       <div className="p-20 pt-10">
-        <p className="text-center my-5 font-bold text-xl uppercase text-cyan-800">
+        <p className="text-center my-10 font-bold text-xl uppercase text-cyan-800">
           Quản lý lịch sử đặt sân
         </p>
         {loading ? (

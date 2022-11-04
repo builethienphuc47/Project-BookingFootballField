@@ -42,7 +42,7 @@ const SignUp = () => {
       })
       .catch(function (error) {
         console.log('ERROR: ', error)
-        alert('Lỗi đăng ký, xin vui lòng thử lại!!!')
+        alert('Số điện thoại hoặc email không hợp lệ, xin vui lòng thử lại!!!')
       })
   }
 
@@ -71,7 +71,7 @@ const SignUp = () => {
         />
         <p className="mt-2">Số điện thoại</p>
         <input
-          type="text"
+          type="number"
           value={phone}
           onChange={(e) => handleChange(e.target.value, 'phone')}
           className="w-[100%] border border-slate-500 border-solid h-8 mt-2 px-2 outline-none"
