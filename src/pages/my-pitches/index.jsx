@@ -25,7 +25,7 @@ const MyPitches = () => {
   const [modalIsOpen, setIsOpen] = useState(false)
   const [idOrder, setIdOrder] = useState('')
   const userId = localStorage.getItem('userId')
-
+  
   const fetchAPI = () => {
     setLoading(true)
     axios
@@ -90,7 +90,13 @@ const MyPitches = () => {
     const orderTime = item?.dateOrder + ' ' + item?.timeOrder
     const date = new Date()
     const currentTime = moment(date).format('DD/MM/YYYY HH:mm')
-    if (orderTime < currentTime) {
+    const orderStatus = item?.orderStatus
+    if (orderStatus === 'waiting') {
+      return (
+        <p className='text-red-400'>Đang chờ duyệt</p>
+      )
+    }
+    if (orderStatus === 'agree' && orderTime < currentTime) {
       return (
         <img
           src={iconTrash}
@@ -99,7 +105,8 @@ const MyPitches = () => {
           className="w-6 h-6 hover:disabled:cursor-not-allowed opacity-50"
         />
       )
-    } else {
+    } 
+    if(orderStatus === 'agree' && orderTime > currentTime) {
       return (
         <img
           src={iconTrash}
@@ -108,6 +115,11 @@ const MyPitches = () => {
           srcset=""
           className="w-6 h-6 hover:scale-110 cursor-pointer"
         />
+      )
+    }
+    if (orderStatus === 'disagree') {
+      return (
+        <p className='text-red-400'>Sân đặt thất bại</p>
       )
     }
   }

@@ -6,7 +6,7 @@ import { TimePicker } from 'react-ios-time-picker'
 import { toast } from 'react-toastify'
 import moment from 'moment'
 import DatePicker from 'react-date-picker'
-
+import { v4 as uuidv4 } from 'uuid';
 const Order = () => {
   let navigate = useNavigate()
   const userId = localStorage.getItem('userId')
@@ -15,9 +15,8 @@ const Order = () => {
   const [timeOrder, setTimeOrder] = useState()
   const [disable, setDisable] = useState(true)
   const { state } = useLocation()
-  // const [value, onChange] = useState(new Date())
-
   const [startDate, setStartDate] = useState();
+
 
   const handleChange = (val, field) => {
     if (field === 'customerName') {
@@ -61,7 +60,7 @@ const Order = () => {
         phone: phone,
         dateOrder: moment(startDate).format('DD/MM/YYYY'),
         timeOrder: timeOrder,
-        orderStatus: 1,
+        orderStatus: "waiting",
         pitchName: state?.pitchName,
         pitchSize: state?.pitchSize,
         price: state?.price,
@@ -70,7 +69,7 @@ const Order = () => {
       .then(function (response) {
         // handleClearData()
         toast.success(
-          `Đặt sân thành công vào ngày ${moment(startDate).format(
+          `Bạn đã đặt sân vào ngày ${moment(startDate).format(
             'DD/MM/YYYY',
           )} vào lúc ${timeOrder}!!!`,
           {
@@ -112,15 +111,13 @@ const Order = () => {
         <input
           type="text"
           value={customerName}
-          placeholder="Ex: Nguyễn Văn A"
           onChange={(e) => handleChange(e.target.value, 'customerName')}
           className="w-[100%] border border-slate-500 border-solid border border-slate-500 border-solid h-8 mt-2 px-2 outline-none"
         />
         <p className="mt-2">Số điện thoại</p>
         <input
           type="number"
-          id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-          placeholder="Ex: +84 70 456 521"
+          id="phone" name="phone" pattern="[0]{3}-[0-9]{2}-[0-9]{3}"
           value={phone}
           onChange={(e) => handleChange(e.target.value, 'phone')}
           className="w-[100%] border border-slate-500 border-solid border border-slate-500 border-solid h-8 mt-2 px-2 outline-none"

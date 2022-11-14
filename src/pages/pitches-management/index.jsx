@@ -135,7 +135,7 @@ const PitchesManagement = () => {
         {loading ? (
           <Loader />
         ) : (
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-10">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-x-6 gap-y-10">
             {data?.map((item) => (
               <div key={item?._id} className="px-3">
                 <PitchCard

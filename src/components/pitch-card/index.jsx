@@ -168,7 +168,7 @@ const PitchCard = ({ isShowInHome, data, refetchApi }) => {
 
   return (
     <div
-      className={`pitchCard w-[230px] min-w-[230px] h-[300px] rounded-md p-2 transition ease-in-out delay-50 bg-slate-200 ${
+      className={`pitchCard w-[230px] min-w-[230px] h-[310px] rounded-md p-2 transition ease-in-out delay-50 bg-slate-200 ${
         isShowInHome &&
         'hover:-translate-y-1 hover:scale-105 hover:bg-emerald-200'
       } duration-300 mx-3`}
